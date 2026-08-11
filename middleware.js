@@ -1,12 +1,17 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse } from "next/server";
 
+// See lib/supabase/client.js for why these two specific values are safe to fall back to.
+const FALLBACK_URL = "https://ogehuqorluzhbfuygsjc.supabase.co";
+const FALLBACK_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9nZWh1cW9ybHV6aGJmdXlnc2pjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYyOTQ4MzUsImV4cCI6MjEwMTg3MDgzNX0.XpMaHtmgigFr_2cG3tE3OVApd69omz8__fbuMRkbwZY";
+
 export async function middleware(request) {
   let response = NextResponse.next({ request: { headers: request.headers } });
 
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    process.env.NEXT_PUBLIC_SUPABASE_URL || FALLBACK_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || FALLBACK_ANON_KEY,
     {
       cookies: {
         getAll() {
