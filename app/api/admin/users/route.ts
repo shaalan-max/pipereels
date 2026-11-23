@@ -5,7 +5,8 @@ import { callerCanManageClient, getCaller } from "@/lib/api-auth";
 import { errorMessage } from "@/lib/format";
 import type { Role } from "@/lib/types";
 
-const TEAM_ROLES: Role[] = ["account_manager", "scriptwriter", "editor"];
+// "owner" = full admin access. Only an existing owner can create one.
+const TEAM_ROLES: Role[] = ["owner", "account_manager", "scriptwriter", "editor"];
 
 // Create a login. Owner: team members + client users. Account manager: client users for their clients.
 export async function POST(request: Request) {

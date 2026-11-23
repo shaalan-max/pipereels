@@ -21,7 +21,7 @@ export function SetupForm({ defaultAgency }: { defaultAgency: string }) {
       return setError(json.error || "Setup failed");
     }
     await createClient().auth.signInWithPassword({ email: form.email.trim(), password: form.password });
-    window.location.assign("/dashboard");
+    window.location.assign("/admin");
   }
 
   return (

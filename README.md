@@ -22,6 +22,8 @@ Built with Next.js 16 (App Router) + Supabase (Postgres, Auth, Storage). Deploye
 | Editor | Edits videos assigned to them, uploads versions, submits for review |
 | Client | Sees only their own workspace; approves/asks for changes, uploads footage, comments |
 
+**Admin page (`/admin`, owners only):** every login in one list — create accounts (including more owners), change someone's role, choose which clients each team member can see, move a client login to another client, reset passwords, disable/enable, and delete. Safety rules: you can't change or delete your own account there, and at least one active owner always remains.
+
 Access is enforced **in the database** (Row Level Security), not just hidden in the UI. Stage changes can only happen through the workflow functions (`advance_video`, `plan_action`), so nobody can skip a step, and clients can never edit content.
 
 ## Setup

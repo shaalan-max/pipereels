@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { LayoutDashboard, KanbanSquare, Building2, Users, Settings, Menu, X, Home } from "lucide-react";
+import { LayoutDashboard, KanbanSquare, Building2, ShieldCheck, Settings, Menu, X, Home } from "lucide-react";
 import type { AgencySettings, Profile } from "@/lib/types";
 import { NotificationBell } from "@/components/NotificationBell";
 import { UserMenu } from "@/components/UserMenu";
@@ -32,7 +32,7 @@ const TEAM_NAV = [
   { href: "/clients", label: "Clients", icon: Building2 },
 ];
 const OWNER_NAV = [
-  { href: "/team", label: "Team", icon: Users },
+  { href: "/admin", label: "Admin", icon: ShieldCheck },
   { href: "/settings", label: "Settings", icon: Settings },
 ];
 
