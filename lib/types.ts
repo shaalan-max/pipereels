@@ -21,6 +21,7 @@ export interface Profile {
   client_id: string | null;
   active: boolean;
   created_at: string;
+  onboarding_seen?: string[];
 }
 
 export interface AgencySettings {

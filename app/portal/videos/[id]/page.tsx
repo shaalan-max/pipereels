@@ -15,6 +15,7 @@ import { Uploader } from "@/components/video/Uploader";
 import { STAGE } from "@/lib/workflow";
 import { fmtDate } from "@/lib/format";
 import { Button, Card, ErrorText, Spinner, StageBadge, cx } from "@/components/ui";
+import { HelpVideo } from "@/components/HelpVideo";
 
 export default function PortalVideoPage() {
   const { id } = useParams<{ id: string }>();
@@ -38,9 +39,14 @@ function ClientVideo({ data, reload }: { data: VideoData; reload: () => void }) 
 
   return (
     <div className="space-y-6">
-      <Link href="/portal" className="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900">
-        <ArrowLeft className="size-4" /> Home
-      </Link>
+      <div className="flex items-center justify-between gap-3">
+        <Link href="/portal" className="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900">
+          <ArrowLeft className="size-4" /> Home
+        </Link>
+        {stage === "script_review" && <HelpVideo key="script" id="script" title="Reviewing your script" description="How to approve a script or ask for changes." />}
+        {stage === "shooting" && <HelpVideo key="shoot" id="shoot" title="Filming and uploading" description="Your shoot guide, the teleprompter, and uploading clips." />}
+        {stage === "client_review" && <HelpVideo key="review" id="review" title="Reviewing your video" description="How to comment at an exact moment and approve your video." />}
+      </div>
 
       <div>
         <div className="flex flex-wrap items-center gap-2">

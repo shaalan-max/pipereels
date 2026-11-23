@@ -7,6 +7,7 @@ import type { Client, Plan, Video } from "@/lib/types";
 import { CLIENT_ACTION_STAGES } from "@/lib/workflow";
 import { firstOfMonthISO, fmtDate, fmtMonth, toISODate } from "@/lib/format";
 import { Card, EmptyState, ErrorText, Spinner, StageBadge } from "@/components/ui";
+import { HelpVideo } from "@/components/HelpVideo";
 
 const ACTION_COPY: Record<string, { title: string; cta: string; icon: React.ComponentType<{ className?: string }> }> = {
   script_review: { title: "Read and approve your script", cta: "Review script", icon: PenLine },
@@ -45,11 +46,14 @@ export default function PortalHome() {
 
   return (
     <div className="space-y-8">
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Hi {profile.full_name.split(" ")[0]} 👋</h1>
-        <p className="mt-1 text-zinc-500">
-          {total === 0 ? "Nothing needs you right now — we're working on your videos." : `${total} thing${total === 1 ? "" : "s"} need${total === 1 ? "s" : ""} your attention.`}
-        </p>
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Hi {profile.full_name.split(" ")[0]} 👋</h1>
+          <p className="mt-1 text-zinc-500">
+            {total === 0 ? "Nothing needs you right now — we're working on your videos." : `${total} thing${total === 1 ? "" : "s"} need${total === 1 ? "s" : ""} your attention.`}
+          </p>
+        </div>
+        <HelpVideo id="welcome" title="Welcome to your portal" description="A 15-second tour of your home screen." />
       </div>
 
       <Card className="p-5 sm:p-6">

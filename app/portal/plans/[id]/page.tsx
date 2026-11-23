@@ -9,6 +9,7 @@ import type { Plan, Video } from "@/lib/types";
 import { fmtDate, fmtMonth } from "@/lib/format";
 import { Badge, Button, Card, ErrorText, Field, Modal, Spinner, StageBadge, Textarea, useToast } from "@/components/ui";
 import { PlatformList } from "@/components/bits";
+import { HelpVideo } from "@/components/HelpVideo";
 
 export default function PortalPlanPage() {
   const { id } = useParams<{ id: string }>();
@@ -45,9 +46,12 @@ export default function PortalPlanPage() {
 
   return (
     <div className="space-y-6">
-      <Link href="/portal" className="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900">
-        <ArrowLeft className="size-4" /> Home
-      </Link>
+      <div className="flex items-center justify-between gap-3">
+        <Link href="/portal" className="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900">
+          <ArrowLeft className="size-4" /> Home
+        </Link>
+        <HelpVideo id="plan" title="Your monthly plan" description="How to review and approve this month's video ideas." />
+      </div>
       <div>
         <div className="text-[13px] font-medium text-zinc-500">{fmtMonth(plan.month)}</div>
         <h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">{plan.title}</h1>
