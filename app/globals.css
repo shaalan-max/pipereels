@@ -1,15 +1,44 @@
-html, body {
-  padding: 0;
-  margin: 0;
-  background: #F8F9FA;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --color-brand: var(--brand, #4f46e5);
+  --color-brand-soft: color-mix(in srgb, var(--brand, #4f46e5) 10%, white);
+  --color-brand-dark: color-mix(in srgb, var(--brand, #4f46e5) 80%, black);
 }
 
-* {
-  box-sizing: border-box;
+html,
+body {
+  background: #f7f7f8;
+  color: #18181b;
+  -webkit-font-smoothing: antialiased;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Keyboard focus that matches the brand */
+:focus-visible {
+  outline: 2px solid var(--brand, #4f46e5);
+  outline-offset: 2px;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 999px;
+}
+
+@keyframes toast-in {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.animate-toast {
+  animation: toast-in 0.18s ease-out;
 }
